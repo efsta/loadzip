@@ -1,0 +1,17 @@
+{
+  "name": "loadzip",
+  "version": "0.0.1",
+  "description": "program deployment as .zip",
+  "main": "loadzip.js",
+  "author": {
+    "name": "Joerg Veigel",
+    "email": "j.veigel@efsta.net"
+  },
+  "keywords": [
+    "packager",
+    "deploy",
+    "zip",
+    "filesystem"
+  ],
+  "license": "MIT"
+}
