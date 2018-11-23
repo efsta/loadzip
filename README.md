@@ -51,6 +51,7 @@ For this you can use the tool [patchmodule.js](https://github.com/efsta/loadzip/
     C:\develop> node.exe patchmodule.js node_modules\pug\lib\index.js
 
 By now following popular modules were identified to need patching:
+
 module   | file
 -------- | ---
 pug      | node_modules\pug\lib\index.js
