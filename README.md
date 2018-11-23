@@ -29,7 +29,7 @@ and of course final testing of the zipped program is obligatory
 although setup configuration will be easier handling a few files only
 
 #### Installation
-As at the moment it is loadzip.js only, download it from [@@@here](https://github.com/efsta/loaddir/loaddir.js).
+As at the moment it is loadzip.js only, download it from [here](https://github.com/efsta/loadzip/blob/master/loadzip.js).
 
 #### Tech
 To have them available as single javascript file, different functions are combined into loadzip.js:
@@ -46,7 +46,7 @@ And the global available wrapper global.$ZFS can be used to access files within 
     var data = global.$ZFS.readFileSync('C:\\production\\template.dat', 'utf8')
 
 If you encounter node modules that access the node filesystem directly - not using require() - you will have to replace the filesystem API.
-For this you can use the tool [@@@patchmodule.js](https://github.com/efsta/loaddir/patchmodule.js):
+For this you can use the tool [patchmodule.js](https://github.com/efsta/loadzip/blob/master/patchmodule.js):
 
     C:\develop> node.exe patchmodule.js node_modules\pug\lib\index.js
 
