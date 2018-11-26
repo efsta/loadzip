@@ -9,7 +9,7 @@ const FS = require('fs'), Path = require('path'), Zlib = require('zlib'), Log = 
 setTimeout(function () {                        // setImmediate (for compatibility with old node.exe)
     try {
         process.argv.splice(1, 1)               // remove loadzip from argument list
-        var file = process.argv[2]; file = Path.resolve(file) + (Path.extname(file)?'':'.zip')
+        var file = process.argv[1]; file = Path.resolve(file) + (Path.extname(file)?'':'.zip')
         var z = new ZFS(file, FS)
         var zroot = Path.dirname(file).replace(/\\/g, '/')
         var zsub, zhas = function (path) {      // z has path?
