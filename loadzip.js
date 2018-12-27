@@ -118,7 +118,7 @@ ZFS.prototype.statSync = function (path, testDirectory) { const I = this // find
             e = tree(name, true)
             if (name.slice(-1) !== '/') {       // file
                 // to represent file entries native Buffer() is used for best performance and minimal memory footprint
-                pos = c.readInt32LE(42) + 30 + n + m // file pos behind LFH
+                pos = c.readInt32LE(42) + 30 + n + m // file pos behind local file header
                 e = e[treename] = Buffer.concat([c.slice(i + 10, i + 16), c.slice(i + 20, i + 28)], 18); e.writeInt32LE(pos, 14); e.isDirectory = returnFalse
 //e.hpos = hpos; I.read(e)
                 if (name === path) return e
