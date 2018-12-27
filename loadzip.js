@@ -109,15 +109,16 @@ ZFS.prototype.statSync = function (path, testDirectory) { const I = this // find
     return e
     function find() {
         var c; if (!(c = I.CD)) return
-        var i, pos, n, m, k, name, csize
+        var i, n, m, k, name, csize, pos
         while ((i = I.CDi) < c.length) {
             if (c.toString('hex', i, i + 4) !== '504b0102') I.throw('CDFH invalid')
             n = c.readInt16LE(i + 28); m = c.readInt16LE(i + 30); k = c.readInt16LE(i + 32); name = c.toString('utf8', i + 46, i + 46 + n); csize = c.readInt32LE(i + 20)
-//var hpos = I.CDpos; Log(JSON.stringify({i:i, name:name, n:n, m:m, k:k, hpos:hpos }))
-            I.CDi = i + 46 + n + m + k; m = 0 /*assumed for LFH*/; pos = I.CDpos + 30 + n + m; I.CDpos = pos + csize
+//var hpos = c.readInt32LE(42); Log(JSON.stringify({i:i, name:name, n:n, m:m, k:k, hpos:hpos }))
+            I.CDi = i + 46 + n + m + k
             e = tree(name, true)
             if (name.slice(-1) !== '/') {       // file
                 // to represent file entries native Buffer() is used for best performance and minimal memory footprint
+                pos = c.readInt32LE(42) + 30 + n + m // file pos behind LFH
                 e = e[treename] = Buffer.concat([c.slice(i + 10, i + 16), c.slice(i + 20, i + 28)], 18); e.writeInt32LE(pos, 14); e.isDirectory = returnFalse
 //e.hpos = hpos; I.read(e)
                 if (name === path) return e
