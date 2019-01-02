@@ -109,10 +109,10 @@ ZFS.prototype.statSync = function (path, testDirectory) { const I = this // find
     return e
     function find() {
         var c; if (!(c = I.CD)) return
-        var i, n, m, k, name, csize, pos
+        var i, n, m, k, name, pos
         while ((i = I.CDi) < c.length) {
             if (c.toString('hex', i, i + 4) !== '504b0102') I.throw('CDFH invalid')
-            n = c.readInt16LE(i + 28); m = c.readInt16LE(i + 30); k = c.readInt16LE(i + 32); name = c.toString('utf8', i + 46, i + 46 + n); csize = c.readInt32LE(i + 20)
+            n = c.readInt16LE(i + 28); m = c.readInt16LE(i + 30); k = c.readInt16LE(i + 32); name = c.toString('utf8', i + 46, i + 46 + n)
 //var hpos = c.readInt32LE(42); Log(JSON.stringify({i:i, name:name, n:n, m:m, k:k, hpos:hpos }))
             I.CDi = i + 46 + n + m + k
             e = tree(name, true)
