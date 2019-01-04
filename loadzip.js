@@ -10,7 +10,7 @@ setTimeout(function () {                        // setImmediate (for compatibili
     try {
         process.argv.splice(1, 1)               // remove loadzip from argument list
         var file = process.argv[1]; file = Path.resolve(file) + (Path.extname(file)?'':'.zip')
-        var z = new ZFS(file, FS)
+        var z = new ZFS(file)
         var zroot = Path.dirname(file).replace(/\\/g, '/')
         var zsub, zhas = function (path) {      // z has path?
             path = path.replace(/^\\\\\?\\/, '').replace(/\\/g, '/')
