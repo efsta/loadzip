@@ -4,7 +4,7 @@
 loadzip allows deployment and execution of a node-js program as single .zip file.
 Zip the app folder (in this example using [7-zip](http://www.7-zip.org)) including subdirectories (node_modules)
 
-    C:\develop> 7z.exe -tzip -mcu a app.zip *.* -r
+    C:\develop> 7z.exe -tzip -mcu a app.zip * -r
 
 (-tzip: zip type, -mcu: utf8 filenames, a: add, .zip file name according to your main .js, -r: recurse)
 and run it on the target system with
