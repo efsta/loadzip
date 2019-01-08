@@ -56,7 +56,7 @@ ZFS.prototype.open = function () { const I = this
     I.fd = FS.openSync(I.file, 'r', 0o666)    // open channel for subsequent reads
     clearTimeout(I.tclose); I.tclose = setTimeout(I.close.bind(I), 3000) // close channel after 3sec
     if (!I.CDe) {                               // read End of central directory record (EOCD)
-        var buf = Buffer.allocUnsafe(22); FS.readSync(I.fd, buf, 0, buf.length, FS.statSync(I.file).size - buf.length) // Comment length=0 assumed
+        var buf = Buffer.allocUnsafe(22); FS.readSync(I.fd, buf, 0, buf.length, FS.fstatSync(I.fd).size - buf.length) // Comment length=0 assumed
         if (buf.toString('hex', 0, 4) !== '504b0506') I.throw('EOCD invalid') // End of central directory signature
         I.CD = Buffer.allocUnsafe(buf.readInt32LE(12)); I.CDi = 0; I.CDpos = 0 // 12: Size of central directory (bytes)
         FS.readSync(I.fd, I.CD, 0, I.CD.length, buf.readInt32LE(16)) // 16: Offset of start of central directory, relative to start of archive
