@@ -65,7 +65,7 @@ ZFS.prototype.open = function () { const I = this
 }
 ZFS.prototype.close = function () { const I = this
     I.ino = FS.statSync(I.file).ino             // for file verification on reopen
-    FS.close(I.fd); delete I.fd
+    FS.closeSync(I.fd); delete I.fd
     if (I.CD && I.CDi > I.CD.length / 4) { I.CD = Buffer.from(I.CD.slice(I.CDi)); I.CDi = 0 } // discard processed memory
 }                                               // use delete zip.CDe to free directory tree memory after close
 ZFS.prototype.shasum = function () { const I = this // corresponds openssl sha256 {file}
